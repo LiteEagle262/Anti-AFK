@@ -1,6 +1,4 @@
 # Anti-AFK
-Simple Anti AFK Made in python
+A very simple Anti-AFK bot, there are much better options but yea mines simple.
 
-Just run `pip install pyautogui` and `pip install ctypes` and also `pip install colorama`
-
-If you dont know how to download these, and run the python version there is a compiled version in releases.
+**If you know how to toggle a loop without breaking please open a pull request**
