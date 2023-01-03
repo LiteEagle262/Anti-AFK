@@ -1,13 +1,8 @@
-import keyboard, os
+import keyboard, os, ctypes
 from colorama import Fore
 from time import sleep
 
-enabled = False
-last_state = False
-count = 0
-
-os.system("title Nest | AntiAFK")
-os.system("cls")
+ctypes.windll.kernel32.SetConsoleTitleW("Nest | AntiAFK")
 
 print(Fore.YELLOW + """
        d8888          888    d8b            d8888 8888888888 888    d8P  
@@ -35,29 +30,31 @@ print(Fore.YELLOW + f"""
   d88P   888 888  888 888    888       d88P   888 888        888  Y88b   
  d8888888888 888  888 Y88b.  888      d8888888888 888        888   Y88b  
 d88P     888 888  888  "Y888 888     d88P     888 888        888    Y88b 
-                   Press {toggle_button} to turn on Anti-AFK.
-                        Close this to stop it.
+                   Press {toggle_button} to toggle the Anti-AFK.
                         Made By liteeagle.me                                               
 """)
 
-def start():
-    while True:
-        try:
-            keyboard.press_and_release('a')
-            sleep(1)
-            keyboard.press_and_release('s')
-            sleep(1)
-            keyboard.press_and_release('space')
-            sleep(1)
-            keyboard.press_and_release('space')
-            sleep(1)
-            return start()
-        except:
-            return start()
+running = False
+
+def start_stop():
+    global running
+    if running:
+        running = False
+        print(Fore.RED + "Stopping Anti-AFK...")
+    else:
+        running = True
+        print(Fore.BLUE + "Starting Anti-AFK...")
+
+keyboard.add_hotkey(toggle_button, start_stop)
 
 while True:
-    key_down = keyboard.is_pressed(toggle_button)
-    if key_down:
-        print(Fore.RED + "Starting Anti-AFK...")
-        start()
-        break
+    if running:
+        try:
+            sleep(1)
+            keyboard.press_and_release('space')
+            sleep(1)
+            keyboard.press_and_release('space')
+            sleep(1)
+            pass
+        except:
+            pass
