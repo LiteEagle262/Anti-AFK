@@ -1,4 +1,2 @@
 # Anti-AFK
-A very simple Anti-AFK bot, there are much better options but yea mines simple.
-
-**If you know how to toggle a loop without breaking please open a pull request**
+A simple but usefull Anti-AFK bot writen in python, if you dont know how to use source code there is a compiled version in releases.
